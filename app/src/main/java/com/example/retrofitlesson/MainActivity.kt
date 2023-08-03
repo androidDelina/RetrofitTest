@@ -53,32 +53,5 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
-
-
-//        val textView = findViewById<TextView>(R.id.textView)
-//        val button = findViewById<Button>(R.id.button)
-//
-//        val interceptor = HttpLoggingInterceptor()
-//        interceptor.level = HttpLoggingInterceptor.Level.BODY
-//
-//        val client = OkHttpClient.Builder()
-//            .addInterceptor(interceptor)
-//            .build()
-//
-//        val retrofit = Retrofit.Builder()
-//            .baseUrl("https://dummyjson.com").client(client)
-//            .addConverterFactory(GsonConverterFactory.create()).build()
-//        val productApi = retrofit.create(RetrofitApi::class.java)
-//
-//        button.setOnClickListener {
-//            CoroutineScope(Dispatchers.IO).launch {
-//                val product1 = productApi.getProductById(1)
-//                runOnUiThread {
-//                    textView.text = product1.title
-//                }
-//            }
-//        }
-
     }
 }
