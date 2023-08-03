@@ -31,8 +31,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         adapter = ProductAdapter()
-        binding.rcView.layoutManager = LinearLayoutManager(this)
-        binding.rcView.adapter = adapter
+        binding.rc.layoutManager = LinearLayoutManager(this)
+        binding.rc.adapter = adapter
 
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
             .build()
         val productApi = retrofit.create(RetrofitApi::class.java)
 
-        binding.searchView.setOnQueryTextListener(object : OnQueryTextListener,
+        binding.searchVieww.setOnQueryTextListener(object : OnQueryTextListener,
             SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return true
