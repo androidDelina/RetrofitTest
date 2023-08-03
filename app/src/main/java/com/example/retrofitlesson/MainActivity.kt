@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.SearchView.OnQueryTextListener
 import android.widget.TextView
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.example.retrofitlesson.adapter.ProductAdapter
@@ -45,13 +47,24 @@ class MainActivity : AppCompatActivity() {
             .build()
         val productApi = retrofit.create(RetrofitApi::class.java)
 
-        CoroutineScope(Dispatchers.IO).launch {
-            val products = productApi.getAllProducts()
-            runOnUiThread {
-                binding.apply {
-                    adapter.submitList(products.products)
-                }
+        binding.searchView.setOnQueryTextListener(object : OnQueryTextListener,
+            SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
             }
-        }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                CoroutineScope(Dispatchers.IO).launch {
+                    val products = newText?.let { productApi.searchProductsByName(it) }
+                    runOnUiThread {
+                        binding.apply {
+                            adapter.submitList(products?.products)
+                        }
+                    }
+                }
+                return true
+            }
+
+        })
     }
 }
