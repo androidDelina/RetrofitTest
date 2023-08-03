@@ -7,15 +7,15 @@ Try to use random username and password
 Correct usernames and passwords:
 
 1.
-kminchelle
-0lelplR
+usernames: kminchelle
+passwords: 0lelplR
 
 2.
-hbingley1
-CQutx25i8r
+usernames: hbingley1
+passwords: CQutx25i8r
 
 3.
-rshawe2
-OWsTbMUgFc
+usernames: rshawe2
+passwords: OWsTbMUgFc
 
 Click on search and start typing phone model name.
