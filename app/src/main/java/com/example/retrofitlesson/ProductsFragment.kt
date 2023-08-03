@@ -1,7 +1,6 @@
 package com.example.retrofitlesson
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,9 +9,7 @@ import android.widget.SearchView
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.retrofitlesson.adapter.ProductAdapter
-import com.example.retrofitlesson.databinding.ActivityMainBinding
 import com.example.retrofitlesson.databinding.FragmentProductsBinding
-import com.example.retrofitlesson.retrofit.AuthRequest
 import com.example.retrofitlesson.retrofit.RetrofitApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,7 +18,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 class ProductsFragment : Fragment() {
 
@@ -44,29 +40,6 @@ class ProductsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initRetrofit()
         initRCView()
-
-
-//        viewModel.token.observe(viewLifecycleOwner) {token ->
-//            binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
-//                androidx.appcompat.widget.SearchView.OnQueryTextListener {
-//                override fun onQueryTextSubmit(query: String?): Boolean {
-//                    return true
-//                }
-//
-//                override fun onQueryTextChange(newText: String?): Boolean {
-//                    CoroutineScope(Dispatchers.IO).launch {
-//                        val products = newText?.let { productApi.searchProductsByNameAuth(token, it) }
-//                        requireActivity().runOnUiThread {
-//                            binding.apply {
-//                                adapter.submitList(products?.products)
-//                            }
-//                        }
-//                    }
-//                    return true
-//                }
-//
-//            })
-//        }
 
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
